@@ -1,11 +1,13 @@
 package com.example.offer_service.services;
 
 import com.example.offer_service.dto.NewServicioRequest;
+import com.example.offer_service.dto.UpdateServiceRequest;
 import com.example.offer_service.entities.Servicio;
 import com.example.offer_service.repositories.ServicioRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ServicioService {
@@ -34,5 +36,28 @@ public class ServicioService {
 
     public List<Servicio> buscarServicios(String query){
         return repository.buscarServicios(query);
+    }
+
+    public  List<Servicio> obtenerTodos(){
+        return repository.findAll();
+    }
+
+    public Optional<Servicio> obtenerPorId(Long id){
+        return repository.findById(id);
+    }
+
+    public Servicio actualizarServicio(Long id, UpdateServiceRequest dto){
+        Optional<Servicio> opt = repository.findById(id);
+        if(opt.isEmpty()) return null;
+        Servicio servicio = opt.get();
+        servicio.setTitulo(dto.getTitulo());
+        servicio.setDescripcion(dto.getDescripcion());
+        servicio.setCategoria(dto.getCategoria().name());
+        servicio.setPrecio(dto.getPrecio());
+        servicio.setDuracion(dto.getDuracion());
+        servicio.setModalidad(dto.getModalidad());
+        servicio.setUbicacion(dto.getUbicacion());
+
+        return repository.save(servicio);
     }
 }

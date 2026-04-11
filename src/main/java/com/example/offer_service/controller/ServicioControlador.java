@@ -2,16 +2,15 @@ package com.example.offer_service.controller;
 
 import com.example.offer_service.dto.BusquedaRequest;
 import com.example.offer_service.dto.NewServicioRequest;
+import com.example.offer_service.dto.UpdateServiceRequest;
 import com.example.offer_service.entities.Servicio;
 import com.example.offer_service.services.ServicioService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/servicio")
@@ -31,7 +30,7 @@ public class ServicioControlador {
 
     }
 
-    @PostMapping("/buscar")
+    @PostMapping("/busqueda")
     public ResponseEntity<?> buscarServicios(@Valid @RequestBody BusquedaRequest request){
         List<Servicio> servicios = service.buscarServicios(request.getQuery());
 
@@ -40,4 +39,25 @@ public class ServicioControlador {
 
     }
 
+    @GetMapping("/listar")
+    public ResponseEntity<List<Servicio>> listarServicios(){
+        List<Servicio> servicios = service.obtenerTodos();
+        return ResponseEntity.ok().body(servicios);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id){
+        Optional<Servicio> opt = service.obtenerPorId(id);
+        if (opt.isPresent()){
+            return ResponseEntity.ok(opt.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<?> actualizarServicio(@PathVariable Long id, @Valid @RequestBody UpdateServiceRequest servicioReq){
+        Servicio actualizado = service.actualizarServicio(id, servicioReq);
+        if(actualizado == null)  return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(actualizado);
+    }
 }
