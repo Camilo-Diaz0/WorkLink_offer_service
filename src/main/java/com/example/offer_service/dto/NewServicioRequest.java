@@ -33,9 +33,9 @@ public class NewServicioRequest {
     @NotBlank(message = "La ubicacion es obligatoria")
     private String ubicacion;
 
-    @NotNull(message = "El id del proovedor es obligatorio")
-    @Positive(message = "El id del proovedor debe ser positivo")
-    private Long proovedorId;
+    @NotNull(message = "El id del proveedor es obligatorio")
+    @Positive(message = "El id del proveedor debe ser positivo")
+    private Long proveedorId;
 
     public String getTitulo() {
         return titulo;
@@ -95,12 +95,12 @@ public class NewServicioRequest {
         this.ubicacion = ubicacion;
     }
 
-    public Long getProovedorId() {
-        return proovedorId;
+    public Long getProveedorId() {
+        return proveedorId;
     }
 
-    public void setProovedorId(Long proovedorId) {
-        this.proovedorId = proovedorId;
+    public void setProveedorId(Long proveedorId) {
+        this.proveedorId = proveedorId;
     }
 }
 

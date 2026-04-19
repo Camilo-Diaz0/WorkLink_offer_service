@@ -27,7 +27,7 @@ public class ServicioService {
                 req.getDuracion(),
                 req.getModalidad(),
                 req.getUbicacion(),
-                req.getProovedorId()
+                req.getProveedorId()
         );
         Servicio save = repository.save(servicio);
         if(save.getId() != null) return save;

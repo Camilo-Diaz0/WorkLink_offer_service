@@ -29,14 +29,14 @@ public class Servicio {
 
 
     // Relación con usuario en otro microservicio
-    private Long proovedorId;
+    private Long proveedorId;
 
     private LocalDateTime fechaCreacion;
 
     public Servicio() {
     }
 
-    public Servicio(String titulo, String descripcion, String categoria, Double precio, Integer duracion, String modalidad, String ubicacion, Long proovedorId) {
+    public Servicio(String titulo, String descripcion, String categoria, Double precio, Integer duracion, String modalidad, String ubicacion, Long proveedorId) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -45,7 +45,7 @@ public class Servicio {
         this.modalidad = modalidad;
         this.ubicacion = ubicacion;
         estado = "activo";
-        this.proovedorId = proovedorId;
+        this.proveedorId = proveedorId;
         fechaCreacion = LocalDateTime.now();
     }
 
@@ -117,12 +117,12 @@ public class Servicio {
         this.estado = estado;
     }
 
-    public Long getProovedorId() {
-        return proovedorId;
+    public Long getProveedorId() {
+        return proveedorId;
     }
 
-    public void setProovedorId(Long proovedorId) {
-        this.proovedorId = proovedorId;
+    public void setProveedorId(Long proveedorId) {
+        this.proveedorId = proveedorId;
     }
 
     public LocalDateTime getFechaCreacion() {
