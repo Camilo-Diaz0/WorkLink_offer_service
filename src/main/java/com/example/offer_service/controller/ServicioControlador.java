@@ -38,6 +38,12 @@ public class ServicioControlador {
         return ResponseEntity.ok(servicios);
 
     }
+    @GetMapping("/listar/{proveedorId}")
+    public ResponseEntity<List<Servicio>> listarByProveedor(@PathVariable Long proveedorId){
+        List<Servicio> servicios = service.listarPorProveedor(proveedorId);
+
+        return ResponseEntity.ok(servicios);
+    }
 
     @GetMapping("/listar")
     public ResponseEntity<List<Servicio>> listarServicios(){
@@ -59,5 +65,14 @@ public class ServicioControlador {
         Servicio actualizado = service.actualizarServicio(id, servicioReq);
         if(actualizado == null)  return ResponseEntity.notFound().build();
         return ResponseEntity.ok(actualizado);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarServicio(@PathVariable Long id){
+        if(service.existe(id)){
+            service.eliminar(id);
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }

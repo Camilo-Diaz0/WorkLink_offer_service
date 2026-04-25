@@ -60,4 +60,13 @@ public class ServicioService {
 
         return repository.save(servicio);
     }
+    public List<Servicio> listarPorProveedor(Long idProveedor){
+        return repository.findByProveedorId(idProveedor);
+    }
+    public void eliminar(Long id){
+        repository.deleteById(id);
+    }
+    public boolean existe(Long id){
+        return repository.existsById(id);
+    }
 }

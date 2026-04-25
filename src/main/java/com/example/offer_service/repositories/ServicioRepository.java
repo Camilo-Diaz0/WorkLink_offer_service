@@ -18,4 +18,6 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
             "AND LOWER(s.estado) = 'activo'"
             , nativeQuery = true)
     List<Servicio> buscarServicios(String query);
+
+    List<Servicio> findByProveedorId(Long proveedorId);
 }
