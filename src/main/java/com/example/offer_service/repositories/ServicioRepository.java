@@ -20,4 +20,5 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
     List<Servicio> buscarServicios(String query);
 
     List<Servicio> findByProveedorId(Long proveedorId);
+    List<Servicio> findByCategoria(String categoria);
 }

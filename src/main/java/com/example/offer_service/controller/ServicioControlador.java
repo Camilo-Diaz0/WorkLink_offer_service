@@ -50,6 +50,11 @@ public class ServicioControlador {
         List<Servicio> servicios = service.obtenerTodos();
         return ResponseEntity.ok().body(servicios);
     }
+    @GetMapping("/listar/categoria/{categoria}")
+    public ResponseEntity<List<Servicio>> listarByCategoria(@PathVariable String categoria){
+        List<Servicio> servicios = service.listarPorCategoria(categoria);
+        return ResponseEntity.ok(servicios);
+    }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id){

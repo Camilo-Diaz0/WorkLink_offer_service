@@ -63,6 +63,9 @@ public class ServicioService {
     public List<Servicio> listarPorProveedor(Long idProveedor){
         return repository.findByProveedorId(idProveedor);
     }
+    public List<Servicio> listarPorCategoria(String categoria){
+        return repository.findByCategoria(categoria);
+    }
     public void eliminar(Long id){
         repository.deleteById(id);
     }
