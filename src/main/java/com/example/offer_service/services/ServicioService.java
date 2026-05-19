@@ -6,7 +6,6 @@ import com.example.offer_service.dto.UpdateServiceRequest;
 import com.example.offer_service.entities.Servicio;
 import com.example.offer_service.repositories.ServicioRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.example.offer_service.dto.ProveedorResponse;
 
@@ -17,11 +16,16 @@ import java.util.Optional;
 @Component
 public class ServicioService {
 
-    @Autowired
-    ServicioRepository repository;
+    private final ServicioRepository repository;
+    private final ProveedoresCercanos proveedoresCercanos;
 
-    @Autowired
-    ProveedoresCercanos proveedoresCercanos;
+    public ServicioService(
+        ServicioRepository repository,
+        ProveedoresCercanos proveedoresCercanos
+    ) {
+        this.repository = repository;
+        this.proveedoresCercanos = proveedoresCercanos;
+    }
 
     public Servicio crearServicio(NewServicioRequest req){
         Servicio servicio = new Servicio(
