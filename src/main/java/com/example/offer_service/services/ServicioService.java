@@ -1,14 +1,10 @@
 package com.example.offer_service.services;
 
-<<<<<<< HEAD
 import com.example.offer_service.config.ProveedoresCercanos;
-=======
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 import com.example.offer_service.dto.NewServicioRequest;
 import com.example.offer_service.dto.UpdateServiceRequest;
 import com.example.offer_service.entities.Servicio;
 import com.example.offer_service.repositories.ServicioRepository;
-<<<<<<< HEAD
 
 import org.springframework.stereotype.Component;
 import com.example.offer_service.dto.ProveedorResponse;
@@ -16,17 +12,10 @@ import com.example.offer_service.dto.ProveedorResponse;
 import java.util.List;
 import java.util.Optional;
     
-=======
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 
 @Component
 public class ServicioService {
 
-<<<<<<< HEAD
     private final ServicioRepository repository;
     private final ProveedoresCercanos proveedoresCercanos;
 
@@ -36,12 +25,6 @@ public class ServicioService {
     ) {
         this.repository = repository;
         this.proveedoresCercanos = proveedoresCercanos;
-=======
-    ServicioRepository repository;
-
-    public ServicioService(ServicioRepository repository){
-        this.repository = repository;
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
     }
 
     public Servicio crearServicio(NewServicioRequest req){
@@ -95,7 +78,6 @@ public class ServicioService {
     public void eliminar(Long id){
         repository.deleteById(id);
     }
-<<<<<<< HEAD
     
     public boolean existe(Long id){
         return repository.existsById(id);
@@ -114,9 +96,4 @@ public class ServicioService {
 
         return repository.findServicesByProveedorId(proveedorIds);
     }
-=======
-    public boolean existe(Long id){
-        return repository.existsById(id);
-    }
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 }

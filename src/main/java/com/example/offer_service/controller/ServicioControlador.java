@@ -16,11 +16,7 @@ import java.util.Optional;
 @RequestMapping("/servicio")
 public class ServicioControlador {
 
-<<<<<<< HEAD
     private final ServicioService service;
-=======
-    private ServicioService service;
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 
     public ServicioControlador(ServicioService service){
         this.service = service;
@@ -84,7 +80,6 @@ public class ServicioControlador {
 
         return ResponseEntity.notFound().build();
     }
-<<<<<<< HEAD
 
     @GetMapping("/listar/proveedor-cercano/{clienteId}/{radioKm}")
     public ResponseEntity<?> listarProveedoresCercanos(@PathVariable Long clienteId, @PathVariable Double radioKm){
@@ -96,6 +91,4 @@ public class ServicioControlador {
 
         return ResponseEntity.ok(proveedores);
     }
-=======
->>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 }
