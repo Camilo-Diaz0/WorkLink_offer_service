@@ -3,7 +3,10 @@ package com.example.offer_service.repositories;
 import com.example.offer_service.entities.Servicio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+<<<<<<< HEAD
 import org.springframework.data.repository.query.Param;
+=======
+>>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,7 +25,10 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
 
     List<Servicio> findByProveedorId(Long proveedorId);
     List<Servicio> findByCategoria(String categoria);
+<<<<<<< HEAD
 
     @Query("SELECT s FROM Servicio s WHERE s.proveedorId IN :proveedorIds")
     List<Servicio> findServicesByProveedorId(@Param("proveedorIds") List<Long> proveedorIds);
+=======
+>>>>>>> bac52e7c890513b85cd93aa4ef7462878523539f
 }
