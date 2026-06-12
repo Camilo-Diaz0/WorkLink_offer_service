@@ -1,6 +1,7 @@
 package com.example.offer_service.services;
 
 import com.example.offer_service.config.ProveedoresCercanos;
+import com.example.offer_service.dto.BusquedaRequest;
 import com.example.offer_service.dto.NewServicioRequest;
 import com.example.offer_service.dto.UpdateServiceRequest;
 import com.example.offer_service.entities.Servicio;
@@ -43,8 +44,8 @@ public class ServicioService {
         return null;
     }
 
-    public List<Servicio> buscarServicios(String query){
-        return repository.buscarServicios(query);
+    public List<Servicio> buscarServicios(BusquedaRequest dto){
+        return repository.buscarServicios(dto.getQuery(), dto.getCategoria(), dto.getPrecio());
     }
 
     public  List<Servicio> obtenerTodos(){

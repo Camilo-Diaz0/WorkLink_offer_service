@@ -32,7 +32,7 @@ public class ServicioControlador {
 
     @PostMapping("/busqueda")
     public ResponseEntity<?> buscarServicios(@Valid @RequestBody BusquedaRequest request){
-        List<Servicio> servicios = service.buscarServicios(request.getQuery());
+        List<Servicio> servicios = service.buscarServicios(request);
 
         if(servicios == null || servicios.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(servicios);

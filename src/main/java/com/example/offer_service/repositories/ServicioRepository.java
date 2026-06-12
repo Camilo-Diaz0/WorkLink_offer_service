@@ -16,9 +16,11 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
             "LOWER(s.titulo) LIKE LOWER(CONCAT('%', ?1, '%'))" +
             "OR LOWER(s.descripcion) LIKE LOWER(CONCAT('%', ?1, '%'))" +
             "OR LOWER(s.categoria) LIKE LOWER(CONCAT('%', ?1, '%')))" +
-            "AND LOWER(s.estado) = 'activo'"
+            "AND LOWER(s.estado) = 'activo'" +
+            "AND (?2 IS NULL OR UPPER(?2) = 'TODOS' OR LOWER(s.categoria) = LOWER(?2) )" +
+            "AND (?3 IS NULL OR ?3 = 0.0 OR (s.precio <= ?3) )"
             , nativeQuery = true)
-    List<Servicio> buscarServicios(String query);
+    List<Servicio> buscarServicios(String query, String categoria, Double precio);
 
     List<Servicio> findByProveedorId(Long proveedorId);
     List<Servicio> findByCategoria(String categoria);
